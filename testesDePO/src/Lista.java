@@ -210,5 +210,58 @@ public class Lista {
         }
     }
 
+    public void radixSort()
+    {
+        Lista ele[] = new Lista[10];
+        No aux = inicio, auxB;
+        int divisor =1, resto, result, cont=0;
+
+        // inicializa vetor
+        for(int i=0; i< ele.length;i++)
+            ele[i] = new Lista();
+
+        // coloca cada elemento no local do digito menos significativo da vez
+        while(aux!=null)
+        {
+            result = aux.getValor()/divisor;
+            if (result==0)
+                cont++;
+            resto = result%10;
+            ele[resto].insere(aux.getValor());
+            aux = aux.getProx();
+        }
+        divisor = divisor * 10;
+
+        // ordena a lista principal e continua o processo
+        while (cont!=getTam())
+        {
+            cont=0;
+            aux = inicio;
+            for(int i = 0; i< ele.length;i++)
+            {
+                auxB = ele[i].getInicio();
+                while(auxB!=null)
+                {
+                    aux.setValor(auxB.getValor());
+                    aux = aux.getProx();
+                    auxB = auxB.getProx();
+                }
+            }
+
+            for(int i=0; i< ele.length;i++)
+                ele[i] = new Lista();
+            aux = inicio;
+            while(aux!=null)
+            {
+                result = aux.getValor()/divisor;
+                if (result==0)
+                    cont++;
+                resto = result%10;
+                ele[resto].insere(aux.getValor());
+                aux = aux.getProx();
+            }
+            divisor = divisor*10;
+        }
+    }
 
 }
