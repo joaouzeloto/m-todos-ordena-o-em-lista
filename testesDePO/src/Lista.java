@@ -158,6 +158,7 @@ public class Lista {
         {
             B[C[aux.getValor()-1]-1] = aux.getValor();
             C[aux.getValor()-1] = C[aux.getValor()-1] - 1;
+            aux = aux.getAnt();
         }
 
         //posiciona na lista de acordo com B
