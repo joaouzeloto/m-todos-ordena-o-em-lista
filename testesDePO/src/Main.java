@@ -7,7 +7,7 @@ public class Main {
             a.insere((int) (Math.random() * ((120 - 1) + 1)) + 1);
         }
         a.exibir();
-        a.radixSort();
+        a.combSort();
         a.exibir();
     }
 }

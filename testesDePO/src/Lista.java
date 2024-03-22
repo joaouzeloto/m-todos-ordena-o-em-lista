@@ -264,4 +264,52 @@ public class Lista {
         }
     }
 
+    public void combSort()
+    {
+        No aux;
+        int gap, auxI;
+        gap = (int) (getTam()/1.3);
+        for (;gap>0;gap = (int)(gap/1.3))
+        {
+            aux = inicio;
+            for (int i=0;i+gap<getTam();i++)
+            {
+                if (aux.getValor()>getNo(i+gap).getValor())
+                {
+                    auxI = aux.getValor();
+                    aux.setValor(getNo(i+gap).getValor());
+                    getNo(i+gap).setValor(auxI);
+                }
+                aux = aux.getProx();
+            }
+        }
+    }
+
+    public void gnomeSort()
+    {
+        No aux, marcar;
+        int a;
+        aux = inicio;
+        while (aux.getProx()!=null)
+        {
+            if(aux.getValor()>aux.getProx().getValor())
+            {
+                a = aux.getValor();
+                aux.setValor(aux.getProx().getValor());
+                aux.getProx().setValor(a);
+            }
+            marcar = aux.getProx();
+            while (aux.getAnt()!=null&&aux.getValor()<aux.getAnt().getValor())
+            {
+                a = aux.getValor();
+                aux.setValor(aux.getAnt().getValor());
+                aux.getAnt().setValor(a);
+                aux = aux.getAnt();
+            }
+            aux = marcar;
+        }
+    }
+
+
+
 }
